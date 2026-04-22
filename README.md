@@ -1,6 +1,6 @@
-# ⚡ APEX — BTC/USD Options Algorithmic Trading System
+# ⚡ APEX — Crypto Options Algorithmic Trading System
 
-> Professional-grade algorithmic options trading platform for Bitcoin. Full-stack, production-ready, runs locally or via Docker.
+> Professional-grade algorithmic options trading platform for crypto assets. Full-stack, production-ready, runs locally or via Docker.
 
 ---
 
@@ -143,7 +143,7 @@ MAX_PORTFOLIO_LEVERAGE=3.0
 | Iron Condor | Neutral | Sell OTM put+call spreads |
 | Long Straddle | Long Vol | ATM call+put, big move play |
 | Long Strangle | Long Vol | OTM call+put, cheaper |
-| Covered Call | Income | BTC holding + OTM call |
+| Covered Call | Income | crypto holding + OTM call |
 | Bull Call Spread | Bullish | Limited risk directional |
 | Bear Put Spread | Bearish | Limited risk directional |
 | Butterfly | Neutral | Pin risk at target strike |

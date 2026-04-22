@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-echo "🚀 Starting BTC Options Algo Trader..."
+echo "🚀 Starting superTrade..."
 
 cd "$(dirname "$0")/../.."
 
@@ -30,7 +30,7 @@ FRONTEND_PID=$!
 
 echo ""
 echo "═══════════════════════════════════════════"
-echo "  APEX — BTC Options Algo Trader"
+echo "  APEX — superTrade"
 echo "  Backend:  http://localhost:8000"
 echo "  Frontend: http://localhost:5173"
 echo "  API Docs: http://localhost:8000/api/docs"

@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
             <div className="w-8 h-8 rounded-lg bg-accent-cyan/20 border border-accent-cyan/40 flex items-center justify-center text-accent-cyan font-bold text-lg">⚡</div>
             <div>
               <p className="font-display font-bold text-text-vivid text-sm tracking-wide">APEX</p>
-              <p className="text-[10px] font-mono text-text-muted leading-none">BTC Options Algo</p>
+              <p className="text-[10px] font-mono text-text-muted leading-none">Crypto Options Algo</p>
             </div>
             {paperMode && <Badge label="PAPER" color="amber"/>}
             <Badge label={wsConnected ? 'LIVE' : 'CONN…'} color={wsConnected ? 'green' : 'amber'}/>
@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
             {spot && (
               <div className="flex items-center gap-3">
                 <div className="text-right">
-                  <p className="text-[10px] font-mono text-text-muted uppercase">BTC/USD</p>
+                  <p className="text-[10px] font-mono text-text-muted uppercase">CRYPTO/USD</p>
                   <p className="text-lg font-mono font-bold text-text-vivid">${spot.toLocaleString('en-US', {minimumFractionDigits:2})}</p>
                 </div>
                 {ticker?.iv && (

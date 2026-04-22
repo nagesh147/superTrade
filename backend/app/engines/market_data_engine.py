@@ -1,6 +1,6 @@
 """
 Market Data Engine - Real-time WebSocket feed from Deribit + REST fallback
-Handles: BTC/USD spot, options chain, order book, funding rates, IV index
+Handles: Crypto spot, options chain, order book, funding rates, IV index
 """
 import asyncio
 import json
@@ -96,13 +96,13 @@ class MarketDataEngine:
         self._subscribers.setdefault(channel, []).append(callback)
 
     async def start_paper_feed(self):
-        """Simulate realistic BTC market data for paper trading"""
+        """Simulate realistic crypto market data for paper trading"""
         self._running = True
         spot = 65000.0
         iv = 0.65
         logger.info("Starting paper trading market feed simulation")
         while self._running:
-            # Simulate realistic BTC price walk
+            # Simulate realistic crypto price walk
             spot *= math.exp(random.gauss(0, 0.0015))
             spot = max(30000, min(150000, spot))
             iv = max(0.20, min(2.0, iv + random.gauss(0, 0.005)))

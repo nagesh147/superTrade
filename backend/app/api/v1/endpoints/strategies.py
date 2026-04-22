@@ -18,9 +18,9 @@ async def list_strategies():
         {"id": "iron_condor",      "name": "Iron Condor",       "type": "neutral",  "description": "Sell OTM put+call spreads, profit from low vol"},
         {"id": "straddle",         "name": "Long Straddle",      "type": "long_vol", "description": "Buy ATM call+put, profit from large moves"},
         {"id": "strangle",         "name": "Long Strangle",      "type": "long_vol", "description": "Buy OTM call+put, cheaper than straddle"},
-        {"id": "covered_call",     "name": "Covered Call",       "type": "income",   "description": "Own BTC, sell OTM calls for income"},
+        {"id": "covered_call",     "name": "Covered Call",       "type": "income",   "description": "Own crypto, sell OTM calls for income"},
         {"id": "bull_call_spread", "name": "Bull Call Spread",   "type": "bullish",  "description": "Limited risk bullish directional bet"},
-        {"id": "butterfly",        "name": "Butterfly Spread",   "type": "neutral",  "description": "Profit if BTC pins at target strike"},
+        {"id": "butterfly",        "name": "Butterfly Spread",   "type": "neutral",  "description": "Profit if asset pins at target strike"},
         {"id": "calendar_spread",  "name": "Calendar Spread",    "type": "neutral",  "description": "Sell near-term, buy far-term, profit from theta"},
         {"id": "delta_neutral",    "name": "Delta Neutral Hedge","type": "neutral",  "description": "Continuously hedge delta with perp/spot"},
     ]}

@@ -70,6 +70,6 @@ export const useAppStore = create<AppState>()(
       setCash: (cash) => set({ cash }),
       setPortfolioValue: (portfolioValue) => set({ portfolioValue }),
     })),
-    { name: 'btc-algo-store' }
+    { name: 'supertrade-store' }
   )
 )

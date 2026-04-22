@@ -1,5 +1,5 @@
 """
-BTC Options Algo Trader - FastAPI Application
+superTrade - FastAPI Application
 """
 import asyncio
 from contextlib import asynccontextmanager
@@ -27,7 +27,7 @@ feed_task: asyncio.Task = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global market_engine, risk_engine, oms, strategy_engine, feed_task
-    logger.info("=== BTC Options Algo Trader Starting ===")
+    logger.info("=== superTrade Starting ===")
     
     # Initialize engines
     market_engine = MarketDataEngine({
@@ -69,7 +69,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="Professional-grade BTC/USD Options Algorithmic Trading System",
+    description="Professional-grade Crypto Options Algorithmic Trading System",
     docs_url="/api/docs",
     redoc_url="/api/redoc",
     openapi_url="/api/openapi.json",

@@ -19,7 +19,7 @@ export const Dashboard: React.FC = () => {
         <StatCard label="Portfolio Value" value={`$${(portfolio?.portfolio_value || 100000).toLocaleString()}`}
           color="text-text-vivid"/>
         <StatCard label="Cash Available" value={`$${(portfolio?.cash || 100000).toFixed(0)}`}/>
-        <StatCard label="BTC Spot" value={`$${(ticker?.spot || 0).toLocaleString()}`}
+        <StatCard label="Crypto Spot" value={`$${(ticker?.spot || 0).toLocaleString()}`}
           color="text-accent-cyan"/>
         <StatCard label="IV Index" value={`${((ticker?.iv || 0)*100).toFixed(1)}%`}
           color={(ticker?.iv||0) > 0.8 ? 'text-accent-red' : (ticker?.iv||0) > 0.5 ? 'text-accent-amber' : 'text-accent-green'}/>

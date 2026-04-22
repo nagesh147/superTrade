@@ -4,7 +4,7 @@ from typing import Optional, List
 
 
 class Settings(BaseSettings):
-    APP_NAME: str = "BTC Options Algo Trader"
+    APP_NAME: str = "superTrade"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     ENVIRONMENT: str = "development"
@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     ALLOWED_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:3000"]
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/btc_options"
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/supertrade"
     REDIS_URL: str = "redis://localhost:6379/0"
     DERIBIT_API_KEY: Optional[str] = None
     DERIBIT_API_SECRET: Optional[str] = None

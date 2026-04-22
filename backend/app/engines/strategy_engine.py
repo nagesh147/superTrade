@@ -87,7 +87,7 @@ class StrategyEngine:
             max_profit=credit, max_loss=max_loss,
             breakevens=[high_put - credit, low_call + credit],
             net_premium=net_prem, net_delta=nd, net_gamma=ng, net_vega=nv, net_theta=nt,
-            rationale=f"Iron Condor: collect ${credit:.2f} premium; profit if BTC stays [{high_put:.0f}, {low_call:.0f}]"
+            rationale=f"Iron Condor: collect ${credit:.2f} premium; profit if asset stays [{high_put:.0f}, {low_call:.0f}]"
         )
 
     def straddle(self, S, sigma, T, atm_offset=0) -> StrategySignal:
@@ -99,7 +99,7 @@ class StrategyEngine:
             max_profit=float("inf"), max_loss=net_prem,
             breakevens=[K - net_prem, K + net_prem],
             net_premium=net_prem, net_delta=nd, net_gamma=ng, net_vega=nv, net_theta=nt,
-            rationale=f"Long Straddle at K={K}: profit from large BTC move either direction. Cost: ${net_prem:.2f}"
+            rationale=f"Long Straddle at K={K}: profit from large asset move either direction. Cost: ${net_prem:.2f}"
         )
 
     def strangle(self, S, sigma, T, put_K, call_K) -> StrategySignal:
@@ -149,12 +149,12 @@ class StrategyEngine:
             max_profit=(mid_K - low_K) - net_prem, max_loss=net_prem,
             breakevens=[low_K + net_prem, high_K - net_prem],
             net_premium=net_prem, net_delta=nd, net_gamma=ng, net_vega=nv, net_theta=nt,
-            rationale=f"Butterfly {low_K}/{mid_K}/{high_K}: profit if BTC pins near {mid_K}"
+            rationale=f"Butterfly {low_K}/{mid_K}/{high_K}: profit if asset pins near {mid_K}"
         )
 
     def delta_hedge_quantity(self, portfolio_delta: float, spot: float) -> float:
-        """How much spot BTC to trade to neutralize delta"""
-        return -portfolio_delta  # sell delta amount of BTC
+        """How much spot crypto to trade to neutralize delta"""
+        return -portfolio_delta  # sell delta amount of crypto
 
     def select_strategy(self, spot: float, iv: float, iv_rank: float,
                         market_bias: str = "neutral") -> StrategyType:

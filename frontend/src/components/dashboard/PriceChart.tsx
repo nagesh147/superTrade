@@ -23,7 +23,7 @@ export const PriceChart: React.FC = () => {
 
   return (
     <Panel className="flex flex-col" glow>
-      <SectionHeader title="BTC/USD SPOT" subtitle="Real-time price feed"
+      <SectionHeader title="CRYPTO/USD SPOT" subtitle="Real-time price feed"
         right={<span className={`text-lg font-mono font-bold ${isUp ? 'text-accent-green' : 'text-accent-red'}`}>
           {isUp ? '▲' : '▼'} ${currentPrice.toLocaleString('en-US', { minimumFractionDigits: 2 })}
         </span>}

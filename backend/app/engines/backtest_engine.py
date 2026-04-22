@@ -54,7 +54,7 @@ class BacktestEngine:
         self.bsm = BlackScholesEngine()
         logger.info(f"Backtester initialized: {config.strategy} [{config.start_date} → {config.end_date}]")
 
-    def _generate_btc_path(self, n_days: int, S0: float = 45000,
+    def _generate_crypto_path(self, n_days: int, S0: float = 45000,
                             mu: float = 0.5, sigma: float = 0.65) -> np.ndarray:
         """GBM simulation with vol clustering (GARCH-like)"""
         dt = 1/365; prices = [S0]; vol = sigma
@@ -72,7 +72,7 @@ class BacktestEngine:
         return np.array(ivs)
 
     def run_iron_condor(self, config: BacktestConfig) -> BacktestResult:
-        n_days = 365; prices = self._generate_btc_path(n_days)
+        n_days = 365; prices = self._generate_crypto_path(n_days)
         ivs = self._generate_iv_path(n_days)
         capital = config.initial_capital; equity = [capital]
         daily_pnl = []; trades = []; greeks_hist = []

@@ -18,7 +18,7 @@ export const OptionsChain: React.FC = () => {
 
   return (
     <Panel>
-      <SectionHeader title="OPTIONS CHAIN" subtitle={`BTC/USD • Spot: $${spot.toLocaleString()}`}
+      <SectionHeader title="OPTIONS CHAIN" subtitle={`CRYPTO/USD • Spot: $${spot.toLocaleString()}`}
         right={<Select value={expiry} onChange={setExpiry} options={expiries}/>}
       />
       <div className="overflow-auto">
