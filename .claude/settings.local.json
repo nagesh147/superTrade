@@ -8,7 +8,21 @@
       "Bash(git commit *)",
       "Bash(gh repo *)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -m venv .venv)",
+      "Bash(cd /home/nageshmadaram/superTrade/backend && pip install -r requirements.txt)",
+      "Bash(cd /home/nageshmadaram/superTrade/backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000)",
+      "Bash(cd /home/nageshmadaram/superTrade/backend && python -m compileall app)",
+      "Bash(cd /home/nageshmadaram/superTrade/backend && pytest)",
+      "Bash(cd /home/nageshmadaram/superTrade/frontend && npm install)",
+      "Bash(cd /home/nageshmadaram/superTrade/frontend && npm run dev)",
+      "Bash(cd /home/nageshmadaram/superTrade/frontend && npm run type-check)",
+      "Bash(cd /home/nageshmadaram/superTrade/frontend && npm run build)",
+      "Bash(cd /home/nageshmadaram/superTrade/frontend && npm run lint)",
+      "Bash(cd /home/nageshmadaram/superTrade && bash infra/scripts/start.sh)",
+      "Bash(cd /home/nageshmadaram/superTrade && docker-compose config)",
+      "Bash(cd /home/nageshmadaram/superTrade && docker-compose up --build)"
     ]
   }
 }
