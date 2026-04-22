@@ -41,7 +41,7 @@
 
 ```bash
 # 1. Clone and enter the project
-cd btc-options-algo
+cd superTrade
 
 # 2. One-command start (paper trading mode, no DB needed)
 bash infra/scripts/start.sh
@@ -78,7 +78,7 @@ Open: http://localhost (via nginx)
 ## 📁 Project Structure
 
 ```
-btc-options-algo/
+superTrade/
 ├── backend/
 │   ├── app/
 │   │   ├── core/           # Config, database, security
