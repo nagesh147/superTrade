@@ -1,7 +1,76 @@
 # superTrade / APEX — Claude project memory
 
+## Default operating mode
+
+These rules apply on every task unless the user explicitly overrides them.
+The user should not need to restate them in chat.
+
+1. Read the exact owner files before editing.
+2. Trust implemented code over README claims.
+3. Preserve current API contracts unless the task explicitly requests a contract change.
+4. If a contract changes, update backend producer, frontend consumer, and shared types together.
+5. Keep paper trading as the default execution mode unless the task explicitly changes it.
+6. Prefer the smallest safe diff over broad rewrites.
+7. Do not invent missing modules, endpoints, files, or exchange integrations.
+8. Do not present simulated or random data as live exchange truth.
+9. Do not mark work complete without reporting exact verification commands and outcomes.
+10. Keep responses concise. Do not repeat repo context or these rules back to the user unless necessary.
+
+## Prompt minimization rule
+
+Treat each user message as task delta only.
+Short prompts such as these are sufficient:
+
+- `Implement <feature>.`
+- `Fix <bug>.`
+- `Refactor <area>. No behavior change.`
+- `Audit <module>. No code yet.`
+- `Add <feature> end-to-end.`
+- `Change API contract for <x> and update all consumers.`
+
+Do not require the user to prepend instructions like:
+
+- read CLAUDE.md
+- inspect code first
+- preserve contracts
+- keep paper mode default
+- use minimal diff
+- report verification
+
+Those are already mandatory here.
+
+## Task mode defaults
+
+### If the prompt starts with `Implement`
+
+- inspect current ownership first
+- propose smallest safe plan
+- code
+- verify
+- report changed files, commands, results, and risks
+
+### If the prompt starts with `Fix` or `Debug`
+
+- reproduce or trace first
+- find first divergent layer
+- patch only after root cause is identified
+- verify the fix directly
+
+### If the prompt starts with `Audit`, `Map`, or `Review`
+
+- do not code unless explicitly asked
+- inspect current implementation only
+- separate facts, gaps, assumptions, and risks
+
+### If the prompt says `No behavior change`
+
+- keep external contracts and runtime behavior stable
+- treat this as refactor-only work
+
 ## Project identity
+
 superTrade is a full-stack crypto options trading platform with:
+
 - FastAPI backend in `backend/app`
 - React + TypeScript + Vite frontend in `frontend/src`
 - Docker Compose stack in `docker-compose.yml`
@@ -9,11 +78,14 @@ superTrade is a full-stack crypto options trading platform with:
 - Paper trading enabled by default
 
 ## Source-of-truth rule
+
 Trust the implemented code more than the README.
 The README describes a broader target architecture. Some current endpoints and feeds are simulated or random. Do not overclaim production readiness unless the code proves it.
 
 ## Current implemented architecture
+
 ### Backend
+
 - Entry point: `backend/app/main.py`
 - API router: `backend/app/api/v1/router.py`
 - REST + WS endpoints under `backend/app/api/v1/endpoints/`
@@ -28,6 +100,7 @@ The README describes a broader target architecture. Some current endpoints and f
 - WebSocket feed: `/api/v1/ws/feed`
 
 ### Frontend
+
 - Entry: `frontend/src/main.tsx`
 - App shell: `frontend/src/App.tsx`
 - Global state: `frontend/src/store/index.ts`
@@ -45,6 +118,7 @@ The README describes a broader target architecture. Some current endpoints and f
 - Uses Zustand and `@tanstack/react-query`
 
 ### Infrastructure
+
 - Local bootstrap: `infra/scripts/start.sh`
 - Compose services: postgres, redis, backend, frontend, nginx
 - Backend local default port: `8000`
@@ -52,7 +126,9 @@ The README describes a broader target architecture. Some current endpoints and f
 - Docker frontend port mapping: `3000`
 
 ## Commands
+
 ### Local dev
+
 - backend install: `cd backend && pip install -r requirements.txt`
 - backend run: `cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000`
 - frontend install: `cd frontend && npm install`
@@ -60,40 +136,37 @@ The README describes a broader target architecture. Some current endpoints and f
 - one-command start: `bash infra/scripts/start.sh`
 
 ### Verification
+
 - backend smoke import: `cd backend && python -c "from app.main import app; print(app.title)"`
+- backend compile: `cd backend && python -m compileall app`
 - frontend type-check: `cd frontend && npm run type-check`
 - frontend build: `cd frontend && npm run build`
 - frontend lint: `cd frontend && npm run lint`
 - docker stack: `docker-compose up --build`
 
-## Hard rules
-1. Read the relevant existing files before editing.
-2. Preserve the current API contract unless the task explicitly includes a contract change.
-3. If a contract changes, update backend producer, frontend consumer, and related types together.
-4. Keep paper trading as the default unless the task explicitly changes execution mode.
-5. Do not represent simulated/random data paths as live exchange truth.
-6. Do not invent missing components or directories and then act as if they already exist.
-7. Prefer small diffs over broad rewrites.
-8. Do not mark work complete without reporting exact verification commands and outcomes.
-9. Keep WebSocket and REST URL construction aligned with `frontend/src/utils/api.ts`.
-10. Preserve `/health`, `/api/docs`, and the FastAPI lifespan engine wiring unless the task explicitly changes startup architecture.
-
 ## Known repo realities
+
 - The frontend dependency list includes both `react-query` and `@tanstack/react-query`, but the code imports `@tanstack/react-query`. Do not deepen that inconsistency.
 - Some backend endpoints use generated or random values. Treat them as placeholders until replaced.
 - The README mentions directories and capabilities that may not yet exist. Validate on disk before relying on them.
 - `backend/tests/` exists but is minimal. Stronger verification may require adding tests plus smoke checks.
 
-## Preferred workflow
-For implementation tasks:
-1. Read `CLAUDE.md` and relevant scoped rules.
-2. Read the exact files that own the behavior.
-3. Summarize current state and smallest safe plan.
-4. Implement with minimal surface area.
-5. Run the narrowest useful verification.
-6. Report changed files, verification results, and remaining risks.
+## Preferred answer format
+
+Keep answers compact.
+Default output should usually be:
+
+1. current finding or plan
+2. files changed or files inspected
+3. verification commands and outcomes
+4. remaining risks or assumptions
+
+Do not add long preambles.
+Do not restate obvious repo context.
+Do not produce marketing language.
 
 ## Files that usually matter first
+
 - `README.md`
 - `docker-compose.yml`
 - `infra/scripts/start.sh`
