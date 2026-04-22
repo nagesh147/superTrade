@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-surface-0 text-text-base antialiased; font-family: 'DM Sans', sans-serif; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-surface-1; }
+  ::-webkit-scrollbar-thumb { @apply bg-border-bright rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-text-muted; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@layer utilities {
+  .text-glow-cyan { text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+  .text-glow-green { text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+  .border-glow { box-shadow: 0 0 15px rgba(0,212,255,0.2); }
+}
