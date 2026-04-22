@@ -19,9 +19,9 @@ Applies to test code, smoke validation, and completion claims across the repo.
 - `cd frontend && npm run lint`
 
 ### Backend
-- `cd backend && python -m compileall app`
-- `cd backend && python -c "from app.main import app; print(app.title)"`
-- `cd backend && pytest`
+- `cd backend && source .venv/bin/activate && python -m compileall app`
+- `cd backend && source .venv/bin/activate && python -c "from app.main import app; print(app.title)"`
+- `cd backend && source .venv/bin/activate && pytest`
 
 ### Integration
 - `bash infra/scripts/start.sh`

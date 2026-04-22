@@ -1,4 +1,15 @@
-# Frontend rules for `frontend/**`
+---
+paths:
+  - "frontend/**/*.{ts,tsx,js,jsx,css,scss,html}"
+  - "frontend/package.json"
+  - "frontend/vite.config.ts"
+  - "frontend/tsconfig*.json"
+  - "frontend/tailwind.config.js"
+  - "frontend/postcss.config.js"
+  - "frontend/Dockerfile"
+---
+
+# Frontend rules
 
 ## Scope
 Applies to React, TypeScript, Vite, Tailwind, Zustand, and query-layer work in `frontend/`.
@@ -9,6 +20,7 @@ Applies to React, TypeScript, Vite, Tailwind, Zustand, and query-layer work in `
 - Server state: `@tanstack/react-query`
 - HTTP client: Axios in `frontend/src/utils/api.ts`
 - Realtime: native WebSocket in `frontend/src/hooks/useWebSocket.ts`
+- App shell currently uses a tab-driven page switch in `frontend/src/App.tsx`
 - Path alias: `@/`
 
 ## Rules
